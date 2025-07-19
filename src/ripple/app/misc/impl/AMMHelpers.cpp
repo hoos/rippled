@@ -184,8 +184,9 @@ adjustAmountsByLPTokens(
                 return ammAssetIn(
                     amountBalance, lptAMMBalance, lpTokensActual, tfee);
             else
+                // FIX: use lpTokensActual to match adjusted token amount.
                 return withdrawByTokens(
-                    amountBalance, lptAMMBalance, lpTokens, tfee);
+                    amountBalance, lptAMMBalance, lpTokensActual, tfee);
         }();
         return amountActual < amount
             ? std::make_tuple(amountActual, std::nullopt, lpTokensActual)
